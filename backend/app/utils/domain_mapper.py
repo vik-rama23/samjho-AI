@@ -9,4 +9,5 @@ def map_domain_to_feature(domain: str) -> str:
 
     if domain == "eligibility":
         return "eligibility"
+        
     return "qa"

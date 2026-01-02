@@ -2,5 +2,8 @@
   "/_not-found/page": "app/_not-found/page.js",
   "/qa/page": "app/qa/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/login/page": "app/login/page.js"
+  "/login/page": "app/login/page.js",
+  "/finance/page": "app/finance/page.js",
+  "/eligibility/page": "app/eligibility/page.js",
+  "/page": "app/page.js"
 }

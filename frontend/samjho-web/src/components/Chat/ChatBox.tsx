@@ -7,6 +7,7 @@ import {
   askQuestion,
   fetchChatHistory,
 } from "../../services/chat.service";
+import { normalizeMessage } from "../../utils/chatNormalizer";
 import styles from "./Chat.module.scss";
 
 type ChatMsg = {
@@ -14,7 +15,7 @@ type ChatMsg = {
   message: string;
   source_type?: "document" | "internet" | "none";
   source_name?: string | null;
-  sources?: string[];
+  sources?: any[];
 };
 
 export default function ChatBox({
@@ -24,25 +25,21 @@ export default function ChatBox({
   documentId: number;
   feature: "qa" | "finance" | "eligibility";
 }) {
+
   const [messages, setMessages] = useState<ChatMsg[]>([]);
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement | null>(null);
 
-  // 🔹 Load history
   useEffect(() => {
     if (!documentId) return;
-
-    fetchChatHistory(feature, documentId).then((history) => {
-      setMessages(
-        history.map((m: any) => ({
-          role: m.role,
-          message: m.message,
-          source_type: m.source_type,
-          source_name: m.source_name,
-          sources: m.sources,
-        }))
-      );
-    });
+    fetchChatHistory(feature, documentId)
+      .then((res) => {
+        const history = feature === 'finance' ? res.messages : res ?? [];
+        setMessages(history.map(normalizeMessage));
+      })
+      .catch(() => {
+        setMessages([]);
+      });
   }, [documentId, feature]);
 
   useEffect(() => {
@@ -50,10 +47,12 @@ export default function ChatBox({
   }, [messages, loading]);
 
   const sendMessage = async (question: string) => {
-    // User message
     setMessages((prev) => [
       ...prev,
-      { role: "user", message: question },
+      {
+        role: "user",
+        message: question,
+      },
     ]);
 
     setLoading(true);
@@ -63,13 +62,7 @@ export default function ChatBox({
 
       setMessages((prev) => [
         ...prev,
-        {
-          role: "assistant",
-          message: res.answer,
-          source_type: res.source_type,
-          source_name: res.source_name,
-          sources: res.sources,
-        },
+        normalizeMessage(res),
       ]);
     } catch {
       setMessages((prev) => [
@@ -77,13 +70,14 @@ export default function ChatBox({
         {
           role: "assistant",
           message: "Something went wrong. Please try again.",
+          source_type: "none",
+          sources: [],
         },
       ]);
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <div className={styles.chatContainer}>
       <div className={styles.messages}>

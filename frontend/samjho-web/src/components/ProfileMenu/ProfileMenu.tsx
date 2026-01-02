@@ -23,7 +23,7 @@ export default function ProfileMenu() {
         <div className={styles.dropdown}>
           <div className={styles.userInfo}>
             <strong>{user?.name}</strong>
-            <div style={{paddingTop: "5px"}}>{user?.email}</div>
+            <label style={{paddingTop: "5px"}}>{user?.email}</label>
           </div>
 
           <button className={styles.logout} onClick={logout}>

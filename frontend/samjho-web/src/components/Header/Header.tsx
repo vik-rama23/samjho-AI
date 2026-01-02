@@ -1,23 +1,25 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import UploadForm from "../UploadDocument/UploadForm";
 import styles from "./Header.module.scss";
 import Link from "next/link";
 import ProfileMenu from "../ProfileMenu/ProfileMenu";
+import { fetchDocuments } from "../../services/documents.service";
 
 export default function Header() {
     const [showUpload, setShowUpload] = useState(false);
+    const [mounted, setMounted] = useState(false);
+
     const router = useRouter();
     const pathname = usePathname();
+    useEffect(() => setMounted(true), []);
 
 
-    const handleUploadSuccess = (doc: any) => {
+    const handleUploadSuccess = async(doc: any) => {
         setShowUpload(false);
-
         const domain = doc.domain;
-
         if (["education", "policy", "general"].includes(domain)) {
             router.push("/qa");
         } else if (domain === "finance") {
@@ -25,6 +27,7 @@ export default function Header() {
         } else if (domain === "eligibility") {
             router.push("/eligibility");
         }
+        await fetchDocuments();
     };
 
     return (
@@ -36,7 +39,7 @@ export default function Header() {
                 </Link>
 
                 <div className={styles.actions}>
-                    {pathname !== "/dashboard" && (
+                    {mounted && pathname !== "/dashboard" && (
                         <button
                             className={styles.uploadBtn}
                             onClick={() => setShowUpload(true)}

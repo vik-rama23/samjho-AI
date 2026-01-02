@@ -1,0 +1,20 @@
+def normalize_answer(result):
+    """
+    Ensures all services return the same structure
+    """
+    if isinstance(result, dict):
+        return {
+            "role": "assistant",
+            "answer": result.get("answer", ""),
+            "source_type": result.get("source_type", "none"),
+            "source_name": result.get("source_name"),
+            "sources": result.get("sources", []),
+        }
+
+    return {
+        "answer": str(result),
+        "source_type": "none",
+        "source_name": None,
+        "sources": [],
+        "role": "assistant"
+    }

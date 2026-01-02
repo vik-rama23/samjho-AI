@@ -9,7 +9,6 @@ def extract_rules_from_document(document_text: str) -> dict:
 
     prompt = f"""
         Extract eligibility rules from the document below.
-        Return STRICT JSON only.
 
         Document:
         {document_text}
@@ -23,6 +22,10 @@ def extract_rules_from_document(document_text: str) -> dict:
     """
 
     response = _call_gpt(prompt)
+
+    print(f"response ", response)
+    if not response:
+        return {}
 
     try:
         return json.loads(response)

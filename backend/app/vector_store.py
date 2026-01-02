@@ -7,8 +7,6 @@ from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 import os
 
-print("Splitter OK")
-
 PDF_PATH = "C:/Users/Dell/Desktop/ABSS_2025_Concept_Note.pdf"
 VECTOR_DIR = "vectors/abss_2025"
 
@@ -26,23 +24,17 @@ def extract_text_from_pdf(pdf_path: str) -> str:
 def build_vector_store():
     if not os.path.exists(PDF_PATH):
         raise FileNotFoundError("ABSS_2025.pdf not found")
-
-    print("Extracting text from PDF...")
     text = extract_text_from_pdf(PDF_PATH)
 
     if not text.strip():
         raise ValueError("PDF text extraction failed")
 
-    print("Splitting text into chunks...")
     splitter = RecursiveCharacterTextSplitter(
         chunk_size=800,
         chunk_overlap=100
     )
     chunks = splitter.split_text(text)
 
-    print(f"Total chunks: {len(chunks)}")
-
-    print("Creating embeddings...")
     embeddings = OpenAIEmbeddings(
         model="text-embedding-3-small"
     )
@@ -51,9 +43,6 @@ def build_vector_store():
 
     os.makedirs(VECTOR_DIR, exist_ok=True)
     db.save_local(VECTOR_DIR)
-
-    print("Vector store saved successfully")
-
 
 if __name__ == "__main__":
     build_vector_store()

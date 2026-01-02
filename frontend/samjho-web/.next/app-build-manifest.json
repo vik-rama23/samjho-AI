@@ -27,6 +27,18 @@
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
     ],
+    "/finance/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/finance/page.css",
+      "static/chunks/app/finance/page.js"
+    ],
+    "/eligibility/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/css/app/eligibility/page.css",
+      "static/chunks/app/eligibility/page.js"
+    ],
     "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",

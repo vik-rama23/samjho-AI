@@ -54,7 +54,6 @@ export default function SignupPage() {
         }
       );
 
-      console.log("res", res.data)
       login(res.data.token, res.data.user);
       router.push("/qa");
     } catch (err: any) {

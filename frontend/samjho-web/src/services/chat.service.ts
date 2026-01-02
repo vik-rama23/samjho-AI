@@ -20,7 +20,5 @@ export async function fetchChatHistory(
   const res = await api.get(
     `/${feature}/history?document_id=${documentId}`
   );
-
-  console.log("res", res)
-  return res.data.messages || [];
+  return res.data || [];
 }

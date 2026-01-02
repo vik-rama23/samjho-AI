@@ -5,8 +5,6 @@ from openai import OpenAI
 load_dotenv()
 
 client = OpenAI()
-print("OpenAI client initialized")
-
 
 def _call_gpt(prompt: str) -> str:
     response = client.chat.completions.create(

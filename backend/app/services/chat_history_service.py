@@ -1,7 +1,7 @@
+import json
 from sqlalchemy.orm import Session
 from app.models.chat_message import ChatMessage
-from app.models.document import Document
-from sqlalchemy.sql import func
+
 
 def save_message(
     db: Session,
@@ -10,38 +10,29 @@ def save_message(
     message: str,
     feature: str,
     user_id: int,
-    source_type: str = None,
-    source_name: str = None,
-    sources: list = None,
+    source_type=None,
+    source_name=None,
+    sources=None
 ):
     chat = ChatMessage(
         document_id=document_id,
         role=role,
-        message=message,
+        message=str(message),
         feature=feature,
         user_id=user_id,
         source_type=source_type,
         source_name=source_name,
-        sources=sources,
+        sources=json.dumps(sources) if sources else None
     )
+
     db.add(chat)
-    db.query(Document).filter(
-        Document.id == document_id
-    ).update(
-        {"updated_at": func.now()}
-    )
     db.commit()
     db.refresh(chat)
     return chat
 
 
-def get_chat_history(
-    db: Session,
-    document_id: int,
-    feature: str,
-    user_id: int
-):
-    return (
+def get_chat_history(db, document_id, feature, user_id):
+    rows = (
         db.query(ChatMessage)
         .filter(
             ChatMessage.document_id == document_id,
@@ -51,3 +42,15 @@ def get_chat_history(
         .order_by(ChatMessage.created_at.asc())
         .all()
     )
+
+    return [
+        {
+            "role": r.role,
+            "answer": r.message,
+            "source_type": r.source_type,
+            "source_name": r.source_name,
+            "sources": json.loads(r.sources) if r.sources else [],
+            "created_at": r.created_at,
+        }
+        for r in rows
+    ]

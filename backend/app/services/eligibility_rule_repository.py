@@ -28,5 +28,5 @@ def get_latest_eligibility_rules() -> dict:
     result = db.execute(query).fetchone()
     if not result:
         raise ValueError("No eligibility rules found")
-
+        
     return result[0]

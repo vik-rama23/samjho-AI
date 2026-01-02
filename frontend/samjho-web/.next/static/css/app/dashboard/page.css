@@ -1,0 +1,242 @@
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[14].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[14].oneOf[9].use[5]!./src/components/UploadDocument/UploadForm.module.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.UploadForm_container__8NnEd {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  margin-bottom: 24px;
+}
+
+.UploadForm_title__loeRu {
+  margin: 0;
+  color: #6366f1;
+}
+
+.UploadForm_subtext__Q2VZa {
+  font-size: 14px;
+  color: #475569;
+  margin-bottom: 16px;
+}
+
+.UploadForm_form__TwgCM {
+  display: grid;
+  gap: 16px;
+}
+
+.UploadForm_label1__4d8cM {
+  font-size: 14px;
+  color: #475569;
+  display: flex;
+  flex-direction: column;
+}
+
+.UploadForm_form__TwgCM input,
+.UploadForm_form__TwgCM select {
+  margin-top: 6px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  font-size: 14px;
+  outline: none;
+  margin-left: 5px;
+}
+
+.UploadForm_dropzone___po3k {
+  border: 2px dashed #6366f1;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  background: #eef2ff;
+  color: #6366f1;
+  font-size: 14px;
+}
+.UploadForm_dropzone___po3k:hover {
+  background: #e0e7ff;
+}
+
+.UploadForm_form__TwgCM button {
+  background: linear-gradient(135deg, #6366f1, #818cf8);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+.UploadForm_form__TwgCM button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.UploadForm_status__MoABU {
+  font-size: 13px;
+  color: #22c55e;
+}
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[14].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[14].oneOf[9].use[5]!./src/app/landing.module.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.landing_container__A485G {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.landing_title__aemxz {
+  text-align: center;
+  color: #6366f1;
+}
+
+.landing_subtitle__28jPs {
+  text-align: center;
+  color: #475569;
+  margin-bottom: 30px;
+}
+
+.landing_step__6LcbU {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  margin-bottom: 32px;
+}
+.landing_step__6LcbU h3 {
+  margin-bottom: 8px;
+  color: #6366f1;
+}
+.landing_step__6LcbU p {
+  color: #475569;
+  margin-bottom: 16px;
+}
+
+.landing_actions__lWCdk {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.landing_actions__lWCdk a {
+  flex: 1;
+  text-align: center;
+  background: linear-gradient(135deg, #6366f1, #818cf8);
+  color: white;
+  padding: 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 500;
+}
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[14].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[14].oneOf[9].use[5]!./src/components/Header/Header.module.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.Header_header__MwWvM {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.Header_header__MwWvM a {
+  margin-left: 16px;
+  text-decoration: none;
+  color: #6366f1;
+  font-weight: 500;
+}
+
+.Header_logo__V9h3K {
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+.Header_actions__zh1ZG {
+  display: flex;
+  gap: 12px;
+}
+
+.Header_uploadBtn__SozPy {
+  background: linear-gradient(135deg, #4f46e5, #818cf8);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.Header_modalOverlay__5XNa4 {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.Header_modal__zEKO8 {
+  background: white;
+  padding: 24px;
+  border-radius: 14px;
+  width: 420px;
+}
+
+.Header_closeBtn__W1F51 {
+  margin-top: 12px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[14].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[14].oneOf[9].use[5]!./src/components/ProfileMenu/ProfileMenu.module.scss ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.ProfileMenu_wrapper__5YKFo {
+  position: relative;
+}
+
+.ProfileMenu_avatar__A6jNY {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.ProfileMenu_dropdown__IsYLs {
+  position: absolute;
+  right: 0;
+  top: 44px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  width: 220px;
+  padding: 12px;
+  z-index: 100;
+}
+
+.ProfileMenu_userInfo__m83jt {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+}
+.ProfileMenu_userInfo__m83jt span {
+  font-size: 13px;
+  color: #555;
+}
+
+.ProfileMenu_logout__e6YM4 {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #d32f2f;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 6px;
+}
+.ProfileMenu_logout__e6YM4:hover {
+  background: #fdecea;
+}

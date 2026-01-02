@@ -1,0 +1,16 @@
+@import "../../styles/variables.scss";
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  background: white;
+  border-bottom: 1px solid $border;
+
+  a {
+    margin-left: 16px;
+    text-decoration: none;
+    color: $primary;
+    font-weight: 500;
+  }
+}

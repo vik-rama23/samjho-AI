@@ -1,0 +1,82 @@
+@import "../../styles/variables.scss";
+
+.container {
+  background: $bg-panel;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: $shadow;
+  margin-bottom: 24px;
+}
+
+.title {
+  margin: 0;
+  color: $primary;
+}
+
+.subtext {
+  font-size: 14px;
+  color: $text-secondary;
+  margin-bottom: 16px;
+}
+
+.form {
+  display: grid;
+  gap: 16px;
+}
+
+.label1 {
+  font-size: 14px;
+  color: $text-secondary;
+  display: flex;
+  flex-direction: column;
+}
+
+.form input,
+.form select {
+  margin-top: 6px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid $border;
+  font-size: 14px;
+  outline: none;
+  margin-left: 5px;
+}
+
+.dropzone {
+  border: 2px dashed $primary;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  background: #eef2ff;
+  color: $primary;
+  font-size: 14px;
+
+  &:hover {
+    background: #e0e7ff;
+  }
+}
+
+.form button {
+  background: linear-gradient(
+    135deg,
+    $primary,
+    #818cf8
+  );
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.status {
+  font-size: 13px;
+  color: $secondary;
+}

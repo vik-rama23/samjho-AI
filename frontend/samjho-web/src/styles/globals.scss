@@ -1,0 +1,16 @@
+@import "./variables";
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+  background: $bg;
+  color: $text;
+}
+
+button {
+  cursor: pointer;
+}

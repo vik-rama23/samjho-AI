@@ -1,0 +1,61 @@
+@import "../../styles/variables.scss"; 
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 15px;
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+ .header a {
+    margin-left: 16px;
+    text-decoration: none;
+    color: $primary;
+    font-weight: 500;
+  }
+
+.logo {
+  font-weight: 600;
+  color: #4f46e5;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.uploadBtn {
+  background: linear-gradient(135deg, #4f46e5, #818cf8);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.modal {
+  background: white;
+  padding: 24px;
+  border-radius: 14px;
+  width: 420px;
+}
+
+.closeBtn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}

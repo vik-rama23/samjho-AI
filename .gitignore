@@ -1,0 +1,59 @@
+####################################
+# GENERAL
+####################################
+.env
+.env.*
+*.log
+.DS_Store
+Thumbs.db
+
+####################################
+# NODE / FRONTEND
+####################################
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-lock.yaml
+
+# Next.js
+.next/
+out/
+build/
+
+####################################
+# PYTHON / BACKEND
+####################################
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual env
+venv/
+.venv/
+env/
+ENV/
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+
+####################################
+# VECTOR STORES / DATA
+####################################
+vectors/
+*.faiss
+*.pkl
+
+####################################
+# DATABASE / LOCAL DATA
+####################################
+*.sqlite3
+*.db
+
+####################################
+# IDE
+####################################
+.vscode/
+.idea/

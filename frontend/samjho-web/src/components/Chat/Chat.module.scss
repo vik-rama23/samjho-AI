@@ -1,0 +1,110 @@
+@import "../../styles/variables.scss";
+
+.chatContainer {
+  background: $bg-panel;
+  border-radius: 16px;
+  box-shadow: $shadow;
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+}
+
+.messages {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.message {
+  max-width: 70%;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  border-radius: 14px;
+  font-size: 15px;
+  line-height: 1.5;
+  animation: fadeIn 0.2s ease;
+}
+
+.user {
+  margin-left: auto;
+  color: white;
+  background: linear-gradient(135deg, $primary, #818cf8);
+}
+
+.bot {
+  background: $bg-muted;
+  border-left: 4px solid $primary;
+}
+
+.inputBox {
+  display: flex;
+  border-top: 1px solid $border;
+
+  input {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    outline: none;
+    font-size: 15px;
+  }
+
+  button {
+    padding: 0 22px;
+    background: $primary;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  button:disabled {
+    opacity: 0.6;
+  }
+}
+
+.typing {
+  font-size: 13px;
+  color: $text-secondary;
+  margin-bottom: 10px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+.message {
+  ul {
+    padding-left: 18px;
+    margin: 6px 0;
+  }
+
+  li {
+    margin-bottom: 4px;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  pre {
+    background: #111827;
+    color: #e5e7eb;
+    padding: 12px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 13px;
+  }
+}
+
+.assistant {
+  background: #f8fafc;
+  align-self: flex-start;
+}
+

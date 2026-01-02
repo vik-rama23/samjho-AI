@@ -32,10 +32,7 @@ export default function UploadForm({
     try {
       setLoading(true);
       setStatus("Uploading & processing document…");
-
-      // ✅ get uploaded document info
       const doc = await uploadDocument(formData);
-
       setStatus("Document processed successfully ✅");
       onSuccess?.(doc);
     } catch (err) {

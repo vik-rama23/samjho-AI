@@ -19,6 +19,7 @@ export default function Header() {
 
     const handleUploadSuccess = async(doc: any) => {
         setShowUpload(false);
+        await fetchDocuments();
         const domain = doc.domain;
         if (["education", "policy", "general"].includes(domain)) {
             router.push("/qa");
@@ -27,7 +28,6 @@ export default function Header() {
         } else if (domain === "eligibility") {
             router.push("/eligibility");
         }
-        await fetchDocuments();
     };
 
     return (

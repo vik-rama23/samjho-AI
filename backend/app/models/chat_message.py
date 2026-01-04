@@ -41,5 +41,4 @@ class ChatMessage(Base):
     sources = Column(JSON, nullable=True)               # list of URLs
 
     created_at = Column(TIMESTAMP, server_default=func.now())
-    message = Column(Text, nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())

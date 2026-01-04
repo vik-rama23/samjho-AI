@@ -19,7 +19,10 @@ export default function Header() {
 
     const handleUploadSuccess = async(doc: any) => {
         setShowUpload(false);
-        await fetchDocuments();
+        try {
+            window.dispatchEvent(new CustomEvent("document:uploaded", { detail: doc }));
+        } catch (e) {
+        }
         const domain = doc.domain;
         if (["education", "policy", "general"].includes(domain)) {
             router.push("/qa");
@@ -33,7 +36,6 @@ export default function Header() {
     return (
         <>
             <header className={styles.header}>
-
                 <Link href="/dashboard">
                     <h2 className={styles.logo}>Samadhan AI</h2>
                 </Link>

@@ -7,11 +7,13 @@ import ChatBox from "../../components/Chat/ChatBox";
 import { fetchDocuments } from "../../services/documents.service";
 import { filterDocumentsByFeature } from "../../utils/domainFilter";
 import EmptyState from "../../components/Common/EmptyState";
-import Header from "@/src/components/Header/Header";
+import Header from "../../components/Header/Header";
+import UploadForm from "../../components/UploadDocument/UploadForm";
 
 export default function Finance() {
   const [documents, setDocuments] = useState<any[]>([]);
   const [selectedDoc, setSelectedDoc] = useState<any>(null);
+  const [showUpload, setShowUpload] = useState(false);
 
   const loadDocs = async () => {
     const docs = await fetchDocuments();
@@ -26,6 +28,18 @@ export default function Finance() {
     loadDocs();
   }, []);
 
+    useEffect(() => {
+    const handler = (e: any) => {
+      loadDocs();
+      const doc = e?.detail;
+      if (doc && doc.domain && ["finance"].includes(doc.domain) && !selectedDoc) {
+        setSelectedDoc(doc);
+      }
+    };
+
+    window.addEventListener("document:uploaded", handler as EventListener);
+    return () => window.removeEventListener("document:uploaded", handler as EventListener);
+  }, [selectedDoc]);
 
   return (
     <>

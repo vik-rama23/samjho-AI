@@ -35,6 +35,10 @@ export default function Sidebar({
     <div>
       <h3>{title}</h3>
 
+      {documents?.length === 0 && (
+        <p className={styles.empty}>No documents yet</p>
+      )}
+
       {documents.map((doc) => (
         <div
           key={doc.id}

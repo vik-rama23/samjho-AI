@@ -6,22 +6,15 @@ load_dotenv()
 
 client = OpenAI()
 
-def _call_gpt(prompt: str) -> str:
+def _call_gpt(prompt: str, system_prompt: str):
     response = client.chat.completions.create(
         model="gpt-4o-mini",
         messages=[
-            {
-                "role": "system",
-                "content": "You are Samadhan AI, a helpful assistant for Indian users."
-            },
-            {
-                "role": "user",
-                "content": prompt
-            }
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": prompt}
         ],
-        temperature=0.2
+        temperature=0.3
     )
-
     return response.choices[0].message.content
 
 def explain_document(text: str) -> str:

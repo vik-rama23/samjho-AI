@@ -48,7 +48,6 @@ export default function Home() {
           <div className={styles.actions}>
             <Link href="/qa">Ask Questions</Link>
             <Link href="/finance">Finance Help</Link>
-            <Link href="/eligibility">Check Eligibility</Link>
           </div>
         </div>
 

@@ -3,6 +3,7 @@ from langchain_openai import OpenAIEmbeddings
 from langchain_community.vectorstores import FAISS
 from app.services.ai_service import _call_gpt
 from app.services.answer_schema import normalize_answer
+from app.services.prompt_templates import QA_SYSTEM_PROMPT, FINANCE_SYSTEM_PROMPT
 
 def _load_vector_db(domain: str):
     path = f"vectors/{domain}"
@@ -42,8 +43,13 @@ def answer_from_domain(question: str, domain: str):
         Question:
         {question}
     """
+    # choose system prompt based on domain
+    if domain and domain.lower() == "finance":
+        system_prompt = FINANCE_SYSTEM_PROMPT
+    else:
+        system_prompt = QA_SYSTEM_PROMPT
 
-    answer = _call_gpt(prompt)
+    answer = _call_gpt(prompt, system_prompt)
 
     return normalize_answer({
         "answer": answer,

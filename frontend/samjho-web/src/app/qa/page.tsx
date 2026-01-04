@@ -39,15 +39,22 @@ export default function QA() {
     loadDocs();
   }, []);
 
+  useEffect(() => {
+    const handler = (e: any) => {
+      loadDocs();
+      const doc = e?.detail;
+      if (doc && doc.domain && ["education", "policy", "general"].includes(doc.domain) && !selectedDoc) {
+        setSelectedDoc(doc);
+      }
+    };
 
-  if (showUpload) {
-    return <UploadForm onSuccess={() => location.reload()} />;
-  }
+    window.addEventListener("document:uploaded", handler as EventListener);
+    return () => window.removeEventListener("document:uploaded", handler as EventListener);
+  }, [selectedDoc]);
 
   return (
     <>
       <Header />
-
       <TwoColumnLayout
         sidebar={
           <Sidebar

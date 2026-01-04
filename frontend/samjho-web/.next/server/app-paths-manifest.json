@@ -4,6 +4,5 @@
   "/login/page": "app/login/page.js",
   "/eligibility/page": "app/eligibility/page.js",
   "/qa/page": "app/qa/page.js",
-  "/finance/page": "app/finance/page.js",
-  "/page": "app/page.js"
+  "/finance/page": "app/finance/page.js"
 }

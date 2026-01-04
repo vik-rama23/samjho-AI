@@ -31,13 +31,19 @@ export default function ChatMessage({ msg }: { msg: any }) {
         <div className={styles.source}>
           🌐 Sources:
           <ul>
-            {msg.sources?.map((url: string, i: number) => (
-              <li key={i}>
-                <a href={url} target="_blank" rel="noreferrer">
-                  {url}
-                </a>
-              </li>
-            ))}
+            {msg.sources?.map((s: any, i: number) => {
+              const url =
+                typeof s === "string" ? s.trim() : s && s.url ? String(s.url).trim() : "";
+              const title = typeof s === "object" && s?.title ? s.title : url;
+              if (!url) return null;
+              return (
+                <li key={i}>
+                  <a href={url} target="_blank" rel="noopener noreferrer">
+                    {title}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}

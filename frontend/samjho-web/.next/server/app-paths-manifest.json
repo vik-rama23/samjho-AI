@@ -1,7 +1,6 @@
 {
-  "/qa/page": "app/qa/page.js",
+  "/page": "app/page.js",
   "/dashboard/page": "app/dashboard/page.js",
-  "/login/page": "app/login/page.js",
-  "/finance/page": "app/finance/page.js",
-  "/eligibility/page": "app/eligibility/page.js"
+  "/eligibility/page": "app/eligibility/page.js",
+  "/login/page": "app/login/page.js"
 }

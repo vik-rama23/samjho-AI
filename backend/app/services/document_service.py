@@ -43,18 +43,12 @@ async def upload_document(
     db.refresh(document)
 
     chunks = build_vectors(text, document.id, domain)
-    if domain == "eligibility":
-        rules = extract_rules_from_document(document.content) or {}
-        save_eligibility_rules(
-            document_id=document.id,
-            rules_json=rules
-        )
-
-    return {
-        "document_id": document.id,
-        "domain": domain,
-        "chunks": chunks
-    }
+    # if domain == "eligibility":
+        # rules = extract_rules_from_document(document.content)
+        # save_eligibility_rules(
+        #     document_id=document.id,
+        #     rules_json=rules
+        # )
 
     return {
         "document_id": document.id,

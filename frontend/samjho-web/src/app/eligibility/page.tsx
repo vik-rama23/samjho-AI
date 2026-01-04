@@ -15,7 +15,7 @@ export default function Eligibility() {
 
   const loadDocs = async () => {
     const docs = await fetchDocuments();
-    const qaDocs = filterDocumentsByFeature(docs, "qa");
+    const qaDocs = filterDocumentsByFeature(docs, "eligibility");
     setDocuments(qaDocs);
     if (!selectedDoc && qaDocs.length > 0) {
       setSelectedDoc(qaDocs[0]);

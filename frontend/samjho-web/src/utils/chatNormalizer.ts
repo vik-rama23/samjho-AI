@@ -8,7 +8,6 @@ export type ChatMessageType = {
 
 export function normalizeMessage(raw: any): ChatMessageType {
   if (raw?.message?.message) {
-        console.log("getting called case 1")
     return {
       role: raw.message.role ?? "assistant",
       message: raw.message.message,
@@ -20,7 +19,6 @@ export function normalizeMessage(raw: any): ChatMessageType {
 
   // Case 2: Ask API flat response
   if (raw?.answer) {
-    console.log("raw", raw.role)
     return {
       role: raw.role,
       message: raw.answer,
@@ -32,7 +30,6 @@ export function normalizeMessage(raw: any): ChatMessageType {
 
   // Case 3: History API message
   if (raw?.message && raw?.role) {
-    console.log("getting called case 3")
     return {
       role: raw.role,
       message: raw.message,

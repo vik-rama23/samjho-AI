@@ -83,6 +83,7 @@ from app.dependencies.auth import get_current_user
 from app.models.document import Document
 from app.models.user import User
 from app.services.chat_history_service import get_chat_history
+from app.services.eligibility_service import check_eligibility
 
 router = APIRouter()
 

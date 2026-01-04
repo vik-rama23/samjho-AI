@@ -33,7 +33,7 @@ export default function ChatMessage({ msg }: { msg: any }) {
           <ul>
             {msg.sources?.map((s: any, i: number) => {
               const url =
-                typeof s === "string" ? s.trim() : s && s.url ? String(s.url).trim() : "";
+              typeof s === "string" ? s.trim() : s && s.url ? String(s.url).trim() : "";
               const title = typeof s === "object" && s?.title ? s.title : url;
               if (!url) return null;
               return (

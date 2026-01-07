@@ -8,6 +8,7 @@ from app.api import finance
 from app.api import eligibility
 from app.api import auth
 from app.api import cleanup
+from app.api import jobs
 
 
 app = FastAPI(
@@ -50,6 +51,12 @@ app.include_router(
     eligibility.router,
     prefix="/eligibility",
     tags=["Eligibility"]
+)
+
+app.include_router(
+    jobs.router,
+    prefix="/jobs",
+    tags=["Jobs"]
 )
 
 app.include_router(auth.router)

@@ -1,0 +1,54 @@
+.container {
+  padding: 16px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.card h3 {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
+.org {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.link {
+  font-size: 14px;
+  color: #4f46e5;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.filters button {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  cursor: pointer;
+}
+
+.viewAll {
+    padding: 5px;
+    font-size: 16px;
+    font-weight: 700;
+}

@@ -240,3 +240,100 @@
 .ProfileMenu_logout__e6YM4:hover {
   background: #fdecea;
 }
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[14].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[14].oneOf[9].use[5]!./src/components/Layout/ThreeColumnLayout.module.scss ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.ThreeColumnLayout_wrapper__vMwdZ {
+  display: grid;
+  grid-template-columns: 180px 1fr 370px;
+  height: calc(100vh - 90px);
+}
+
+.ThreeColumnLayout_left__gRIlo {
+  border-right: 1px solid #e5e7eb;
+  background: #fafafa;
+  overflow-y: auto;
+}
+
+.ThreeColumnLayout_center__hbnai {
+  padding: 24px;
+  overflow-y: auto;
+}
+
+.ThreeColumnLayout_right__cLAgD {
+  border-left: 1px solid #e5e7eb;
+  background: #ffffff;
+  overflow-y: auto;
+}
+
+@media (max-width: 1024px) {
+  .ThreeColumnLayout_wrapper__vMwdZ {
+    grid-template-columns: 260px 1fr;
+  }
+  .ThreeColumnLayout_right__cLAgD {
+    display: none;
+  }
+}
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[14].oneOf[9].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[14].oneOf[9].use[3]!./node_modules/next/dist/build/webpack/loaders/resolve-url-loader/index.js??ruleSet[1].rules[14].oneOf[9].use[4]!./node_modules/next/dist/compiled/sass-loader/cjs.js??ruleSet[1].rules[14].oneOf[9].use[5]!./src/components/Jobs/JobSidebar.module.scss ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+.JobSidebar_container__5K6zL {
+  padding: 16px;
+}
+
+.JobSidebar_title__Gq_wB {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.JobSidebar_subtitle__4GqRX {
+  font-size: 16px;
+  color: #6b7280;
+  margin-bottom: 10px;
+}
+
+.JobSidebar_list__ddUUt {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.JobSidebar_job__923lo {
+  padding: 12px;
+  border-radius: 10px;
+  background: #f9fafb;
+  text-decoration: none;
+  color: #111827;
+  border: 1px solid #e5e7eb;
+  transition: background 0.2s ease;
+}
+
+.JobSidebar_job__923lo:hover {
+  background: #eef2ff;
+}
+
+.JobSidebar_jobTitle__wWGEF {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.JobSidebar_meta__7w25N {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.JobSidebar_organization__S7vsw {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 10px;
+  padding-top: 2px;
+}
+
+.JobSidebar_viewAll__dkC_g {
+  padding: 5px;
+  position: relative;
+  top: 20px;
+  font-size: 16px;
+  font-weight: 700;
+}

@@ -52,6 +52,7 @@ export default function QA() {
     return () => window.removeEventListener("document:uploaded", handler as EventListener);
   }, [selectedDoc]);
 
+
   return (
     <>
       <Header />

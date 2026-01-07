@@ -22,7 +22,7 @@ export default function ProfileMenu() {
       {open && (
         <div className={styles.dropdown}>
           <div className={styles.userInfo}>
-            <strong>{user?.name}</strong>
+            <strong>{user?.name}</strong> <br/><br/>
             <label style={{paddingTop: "5px"}}>{user?.email}</label>
           </div>
 

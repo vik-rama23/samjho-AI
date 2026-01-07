@@ -4,7 +4,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import UploadForm from "../../components/UploadDocument/UploadForm";
 import styles from "../landing.module.scss";
-import Header from "@/src/components/Header/Header";
+import Header from "../../components/Header/Header";
+import ThreeColumnLayout from "../../components/Layout/ThreeColumnLayout";
+import JobsSidebar from "../../components/Jobs/JobsSidebar";
 
 
 export default function Home() {
@@ -24,6 +26,10 @@ export default function Home() {
   return (
     <>
       <Header />
+
+        <ThreeColumnLayout
+        sidebarRight={<JobsSidebar />}
+      >
 
       <div className={styles.container}>
         <h1 className={styles.title}>Samadhan AI</h1>
@@ -59,6 +65,7 @@ export default function Home() {
           </p>
         </div>
       </div>
+      </ThreeColumnLayout>
     </>
   );
 }

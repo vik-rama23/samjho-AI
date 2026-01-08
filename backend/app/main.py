@@ -12,7 +12,7 @@ from app.api import jobs
 
 
 app = FastAPI(
-    title="Samjho AI Backend",
+    title="Samadhan AI Backend",
     description="Document-based AI for Q&A, Finance, and Eligibility",
     version="1.0.0"
 )
@@ -65,7 +65,7 @@ app.include_router(auth.router)
 def health_check():
     return {
         "status": "ok",
-        "service": "Samjho AI Backend"
+        "service": "Samadhan AI Backend"
     }
 
 

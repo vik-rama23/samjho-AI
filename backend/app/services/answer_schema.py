@@ -9,6 +9,7 @@ def normalize_answer(result):
             "source_type": result.get("source_type", "none"),
             "source_name": result.get("source_name"),
             "sources": result.get("sources", []),
+            "found": result.get("found", False),
         }
 
     return {

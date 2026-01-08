@@ -29,10 +29,14 @@ export default function ChatBox({
   const [messages, setMessages] = useState<ChatMsg[]>([]);
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement | null>(null);
+  const [sourceMode, setSourceMode] = useState<"document" | "internet">(
+    "document"
+  );
+    const [suggestInternet, setSuggestInternet] = useState(false);
 
   useEffect(() => {
     if (!documentId) return;
-    fetchChatHistory(feature, documentId)
+    fetchChatHistory(feature, documentId, sourceMode)
       .then((res) => {
         const history = feature === 'finance' ? res.messages : res ?? [];
         setMessages(history.map(normalizeMessage));
@@ -58,7 +62,7 @@ export default function ChatBox({
     setLoading(true);
 
     try {
-      const res = await askQuestion(feature, documentId, question);
+      const res = await askQuestion(feature, documentId, question, sourceMode);
 
       setMessages((prev) => [
         ...prev,
@@ -80,6 +84,30 @@ export default function ChatBox({
   };
   return (
     <div className={styles.chatContainer}>
+      <div className={styles.tabs}>
+        <button
+          className={sourceMode === "document" ? styles.active : ""}
+          onClick={() => setSourceMode("document")}
+        >
+          📄 Document
+        </button>
+        <button
+          className={sourceMode === "internet" ? styles.active : ""}
+          onClick={() => setSourceMode("internet")}
+        >
+          🌐 Internet
+        </button>
+      </div>
+
+      {suggestInternet && (
+        <div className={styles.suggestion}>
+          Not found in document.
+          <button onClick={() => setSourceMode("internet")}>
+            Search Internet
+          </button>
+        </div>
+      )}
+
       <div className={styles.messages}>
         {messages.map((m, i) => (
           <ChatMessage key={i} msg={m} />

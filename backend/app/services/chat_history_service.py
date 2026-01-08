@@ -11,6 +11,7 @@ def save_message(
     message: str,
     feature: str,
     user_id: int,
+    source_mode: str = "document",
     source_type=None,
     source_name=None,
     sources=None
@@ -26,13 +27,14 @@ def save_message(
         .scalar()
     )
 
-    if count < 10:
+    if count < 20:
         chat = ChatMessage(
             document_id=document_id,
             role=role,
             message=str(message),
             feature=feature,
             user_id=user_id,
+            source_mode=source_mode,
             source_type=source_type,
             source_name=source_name,
             sources=json.dumps(sources) if sources else None,
@@ -43,7 +45,7 @@ def save_message(
         db.refresh(chat)
         return chat
 
-    # If there are already 10 messages, update the most recent one instead
+    # If there are already 20 messages, overwrite the oldest one (ring buffer)
     last_message = (
         db.query(ChatMessage)
         .filter(
@@ -51,7 +53,7 @@ def save_message(
             ChatMessage.feature == feature,
             ChatMessage.user_id == user_id,
         )
-        .order_by(ChatMessage.created_at.desc())
+        .order_by(ChatMessage.created_at.asc())
         .first()
     )
 
@@ -70,19 +72,32 @@ def save_message(
     return None
 
 
-def get_chat_history(db, document_id, feature, user_id):
-    rows = (
+def get_chat_history(db, document_id, feature, user_id, source_mode=None):
+    query = (
         db.query(ChatMessage)
         .filter(
             ChatMessage.document_id == document_id,
             ChatMessage.feature == feature,
-            ChatMessage.user_id == user_id
+            ChatMessage.user_id == user_id,
         )
-        .order_by(ChatMessage.created_at.asc())
-        .limit(10)
+    )
+
+    if source_mode is None:
+        query = query.filter(ChatMessage.source_mode.is_(None))
+    else:
+        query = query.filter(ChatMessage.source_mode == source_mode)
+
+    rows = (
+        query
+        .order_by(ChatMessage.created_at.desc())
+        .limit(20)
         .all()
     )
 
+    # rows are newest->oldest; reverse to oldest->newest for chronological display
+    rows = list(reversed(rows))
+
+    print(f"roole {rows}")
     return [
         {
             "role": r.role,

@@ -69,7 +69,7 @@ export default function SignupPage() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h2 style={styles.title}>Create your Samjho AI account</h2>
+        <h2 style={styles.title}>Create your Samadhan AI account</h2>
         <p style={styles.subtitle}>
           Understand documents, finance & eligibility with AI
         </p>

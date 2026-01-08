@@ -52,3 +52,20 @@
     font-size: 16px;
     font-weight: 700;
 }
+
+/* Button class used by component; keep existing .filters button styles but add active state */
+.filterButton {
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid #e5e7eb;
+  background: #fff;
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+}
+
+.filters .filterButton.active,
+.filters .filterButton[aria-pressed="true"] {
+  background: #4f46e5;
+  color: #fff;
+  border-color: #4f46e5;
+}

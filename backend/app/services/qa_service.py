@@ -19,20 +19,24 @@ def answer_from_domain(question: str, domain: str):
     db = _load_vector_db(domain)
 
     if not db:
-        return answer_from_internet(question, domain)
-        # normalize_answer({
-        #     "answer": f"No documents uploaded for '{domain}'.",
-        #     "source_type": "none"
-        # })
+        return normalize_answer({
+            "answer": f"No documents uploaded for '{domain}'.",
+            "source_type": "none",
+            "source_name": None,
+            "sources": [],
+            "found": False,
+        })
 
     docs = db.similarity_search(question, k=3)
 
     if not docs:
-        return answer_from_internet(question, domain)
-        # normalize_answer({
-        #     "answer": "Information not found in uploaded documents.",
-        #     "source_type": "none"
-        # })
+        return normalize_answer({
+            "answer": "Information not found in uploaded documents.",
+            "source_type": "none",
+            "source_name": None,
+            "sources": [],
+            "found": False,
+        })
 
     context = "\n\n".join(d.page_content for d in docs)
 
@@ -68,5 +72,7 @@ def answer_from_domain(question: str, domain: str):
         "answer": answer,
         "source_type": "document",
         "source_name": "Uploaded Document",
-        "sources": []
+        "sources": [],
+        "found":True,
+        "role": "assistant"
     })

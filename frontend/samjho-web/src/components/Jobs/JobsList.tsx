@@ -20,9 +20,38 @@ export default function JobList({ jobs }: { jobs: any[] }) {
             <h2>Active Sarkari Naukri</h2>
 
             <div className={styles.filters}>
-                <button onClick={() => setFilter("all")}>All</button>
-                <button onClick={() => setFilter("central")}>Central</button>
-                <button onClick={() => setFilter("state")}>State</button>
+                <button
+                    type="button"
+                    className={`${styles.filterButton} ${
+                        filter === "all" ? styles.active : ""
+                    }`}
+                    onClick={() => setFilter("all")}
+                    aria-pressed={filter === "all"}
+                >
+                    All
+                </button>
+
+                <button
+                    type="button"
+                    className={`${styles.filterButton} ${
+                        filter === "central" ? styles.active : ""
+                    }`}
+                    onClick={() => setFilter("central")}
+                    aria-pressed={filter === "central"}
+                >
+                    Central
+                </button>
+
+                <button
+                    type="button"
+                    className={`${styles.filterButton} ${
+                        filter === "state" ? styles.active : ""
+                    }`}
+                    onClick={() => setFilter("state")}
+                    aria-pressed={filter === "state"}
+                >
+                    State
+                </button>
             </div>
 
             <div className={styles.grid}>

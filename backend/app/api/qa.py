@@ -50,12 +50,33 @@ def ask_question(
 
 
 @router.get("/history")
-def history(
+def get_history(
     document_id: int,
+    source_mode: str = "document",
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    doc = db.query(Document).filter(Document.id == document_id).first()
+    doc = db.query(Document).filter(
+        Document.id == document_id,
+        Document.user_id == current_user.id
+    ).first()
+
+    if not doc:
+        raise HTTPException(status_code=404, detail="Document not found")
+
     feature = map_domain_to_feature(doc.domain)
 
-    return get_chat_history(db, document_id, feature, current_user.id)
+    messages = get_chat_history(
+        db=db,
+        document_id=document_id,
+        feature=feature,
+        user_id=current_user.id,
+        source_mode=source_mode,
+    )
+
+    return {
+        "document_id": document_id,
+        "feature": feature,
+        "source_mode": source_mode,
+        "messages": messages
+    }

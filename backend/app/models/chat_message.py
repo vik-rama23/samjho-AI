@@ -35,7 +35,7 @@ class ChatMessage(Base):
     role = Column(Enum("user", "assistant"), nullable=False)
     message = Column(Text, nullable=False)
     feature = Column(String(50), nullable=False)
-
+    source_mode = Column(Enum('document', 'internet'), nullable=False)
     source_type = Column(String(20), nullable=True)     # document / internet / none
     source_name = Column(String(255), nullable=True)    # doc title
     sources = Column(JSON, nullable=True)               # list of URLs

@@ -39,6 +39,7 @@ Question:
 
     return {
         "answer": answer,
+        "role": "assistant",
         "source_type": "internet",
         "source_name": "DuckDuckGo",
         "sources": [

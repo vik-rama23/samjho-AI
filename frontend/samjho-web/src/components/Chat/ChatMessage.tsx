@@ -5,6 +5,7 @@ import styles from "./Chat.module.scss";
 
 export default function ChatMessage({ msg }: { msg: any }) {
   if (!msg) return null;
+  console.log("message", msg)
   const text =
     typeof msg.message === "string"
       ? msg.message

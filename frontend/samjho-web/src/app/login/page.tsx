@@ -42,7 +42,7 @@ export default function LoginPage() {
   return (
     <div style={styles.container}>
       <div style={styles.card}>
-        <h2 style={styles.title}>Login to Samjho AI</h2>
+        <h2 style={styles.title}>Login to Samadhan AI</h2>
 
         <input
           style={styles.input}

@@ -108,3 +108,26 @@
   align-self: flex-start;
 }
 
+.sourceTabs {
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.sourceTabs button {
+  padding: 6px 14px;
+  border-radius: 16px;
+  border: 1px solid #ddd;
+  background: #f9f9f9;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.sourceTabs button.active {
+  background: #2563eb;
+  color: white;
+  border-color: #2563eb;
+}
+
+

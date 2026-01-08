@@ -19,6 +19,7 @@ def ask_question(
 ):
     document_id = payload.get("document_id")
     question = payload.get("question")
+    source_mode = payload.get("source_mode")
 
     doc = db.query(Document).filter(
         Document.id == document_id,
@@ -32,7 +33,7 @@ def ask_question(
 
     save_message(db, document_id, "user", question, feature, current_user.id)
 
-    result = answer_from_domain(question, doc.domain)
+    result = answer_from_domain(question, doc.domain, source_mode)
 
     save_message(
         db=db,

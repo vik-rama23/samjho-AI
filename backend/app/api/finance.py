@@ -93,6 +93,7 @@ FEATURE = "finance"
 def get_finance_history(
     document_id: int,
     db: Session = Depends(get_db),
+    source_mode: str = "document",
     current_user: User = Depends(get_current_user),
 ):
     doc = db.query(Document).filter(
@@ -108,7 +109,8 @@ def get_finance_history(
         db=db,
         document_id=document_id,
         feature=FEATURE,
-        user_id=current_user.id
+        user_id=current_user.id,
+        source_mode = source_mode
     )
 
     return {
@@ -126,6 +128,8 @@ def ask_finance(
 ):
     document_id = payload.get("document_id")
     question = payload.get("question")
+    source_mode = payload.get("source_mode")
+
 
     if not document_id or not question:
         raise HTTPException(
@@ -141,8 +145,10 @@ def ask_finance(
 
     if not doc:
         raise HTTPException(status_code=404, detail="Finance document not found")
+
     save_message(db, document_id, "user", question, FEATURE, current_user.id)
-    result = explain_finance(question)
+
+    result = explain_finance(question, source_mode)
     save_message(
         db=db,
         document_id=document_id,

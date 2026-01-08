@@ -11,6 +11,7 @@ def answer_from_internet(question: str, domain: str):
             "source_type": "internet",
             "source_name": None,
             "sources": [],
+            "role": "assistant"
         }
 
     context = "\n\n".join(
@@ -20,15 +21,17 @@ def answer_from_internet(question: str, domain: str):
     )
 
     prompt = f"""
-Answer the question using the information below.
-Keep the answer simple and factual.
+        Answer the question using the information below
+        Keep the answer simple and factual.
+        Show sources in English only.
 
-Context:
-{context}
 
-Question:
-{question}
-"""
+        Context:
+        {context}
+
+        Question:
+        {question}
+    """
 
     system_prompt = QA_SYSTEM_PROMPT
     if domain and domain.lower() == "finance":

@@ -16,29 +16,31 @@ type ChatMsg = {
   source_type?: "document" | "internet" | "none";
   source_name?: string | null;
   sources?: any[];
+   created_at?: string;
 };
 
 export default function ChatBox({
   documentId,
   feature,
+  userId
 }: {
   documentId: number;
   feature: "qa" | "finance" | "eligibility";
+  userId: number
 }) {
 
   const [messages, setMessages] = useState<ChatMsg[]>([]);
   const [loading, setLoading] = useState(false);
   const bottomRef = useRef<HTMLDivElement | null>(null);
-  const [sourceMode, setSourceMode] = useState<"document" | "internet">(
-    "document"
-  );
-    const [suggestInternet, setSuggestInternet] = useState(false);
+  const [sourceMode, setSourceMode] = useState<"document" | "internet">("document");
+  const [suggestInternet, setSuggestInternet] = useState(false);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     if (!documentId) return;
-    fetchChatHistory(feature, documentId, sourceMode)
+    fetchChatHistory(feature, documentId, sourceMode, userId)
       .then((res) => {
-        const history = feature === 'finance' ? res.messages : res ?? [];
+        const history =  res ?? [];
         setMessages(history.map(normalizeMessage));
       })
       .catch(() => {
@@ -84,7 +86,7 @@ export default function ChatBox({
   };
   return (
     <div className={styles.chatContainer}>
-      <div className={styles.tabs}>
+      <div className={styles.sourceTabs}>
         <button
           className={sourceMode === "document" ? styles.active : ""}
           onClick={() => setSourceMode("document")}
@@ -121,8 +123,7 @@ export default function ChatBox({
 
         <div ref={bottomRef} />
       </div>
-
-      <ChatInput onSend={sendMessage} disabled={loading} />
+      <ChatInput onSend={sendMessage} disabled={loading} sourceMode = {sourceMode}/>
     </div>
   );
 }

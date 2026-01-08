@@ -15,28 +15,30 @@ def _load_vector_db(domain: str):
     return FAISS.load_local(path, embeddings, allow_dangerous_deserialization=True)
 
 
-def answer_from_domain(question: str, domain: str):
+def answer_from_domain(question: str, domain: str, source_mode ="document"):
     db = _load_vector_db(domain)
+    if (source_mode == "internet"):
+        return answer_from_internet(question, domain)
+    else:
+        if not db:
+            return normalize_answer({
+                "answer": f"No documents uploaded for '{domain}'.",
+                "source_type": "none",
+                "source_name": None,
+                "sources": [],
+                "found": False,
+            })
 
-    if not db:
-        return normalize_answer({
-            "answer": f"No documents uploaded for '{domain}'.",
-            "source_type": "none",
-            "source_name": None,
-            "sources": [],
-            "found": False,
-        })
+        docs = db.similarity_search(question, k=3)
 
-    docs = db.similarity_search(question, k=3)
-
-    if not docs:
-        return normalize_answer({
-            "answer": "Information not found in uploaded documents.",
-            "source_type": "none",
-            "source_name": None,
-            "sources": [],
-            "found": False,
-        })
+        if not docs:
+            return normalize_answer({
+                "answer": "Information not found in uploaded documents.",
+                "source_type": "none",
+                "source_name": None,
+                "sources": [],
+                "found": False,
+            })
 
     context = "\n\n".join(d.page_content for d in docs)
 
@@ -46,7 +48,7 @@ def answer_from_domain(question: str, domain: str):
         STRICT RULES:
         - If the answer is NOT present in the context,
         reply with EXACTLY this text:
-        >>> ANSWER_NOT_FOUND <<<
+        Information not found in uploaded documents.
 
         Context:
         {context}
@@ -63,10 +65,7 @@ def answer_from_domain(question: str, domain: str):
 
     answer = _call_gpt(prompt, system_prompt)
 
-    if "ANSWER_NOT_FOUND" in answer.upper():
-        return answer_from_internet(question, domain)
-
-    print 
+   
 
     return normalize_answer({
         "answer": answer,

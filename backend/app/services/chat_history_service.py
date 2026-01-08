@@ -34,10 +34,10 @@ def save_message(
             message=str(message),
             feature=feature,
             user_id=user_id,
-            source_mode=source_mode,
             source_type=source_type,
             source_name=source_name,
             sources=json.dumps(sources) if sources else None,
+            source_mode=source_mode,
         )
 
         db.add(chat)

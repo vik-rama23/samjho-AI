@@ -6,9 +6,11 @@ import styles from "./Chat.module.scss";
 export default function ChatInput({
   onSend,
   disabled,
+  sourceMode
 }: {
   onSend: (msg: string) => void;
   disabled: boolean;
+  sourceMode: string
 }) {
   const [text, setText] = useState("");
 
@@ -21,7 +23,11 @@ export default function ChatInput({
   return (
     <div className={styles.inputBox}>
       <input
-        placeholder="Ask a question based on uploaded documents…"
+        placeholder={
+            sourceMode === "document"
+              ? "Ask from document…"
+              : "Ask from internet…"
+          }
         value={text}
         onChange={(e) => setText(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && send()}

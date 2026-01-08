@@ -18,12 +18,14 @@ export async function askQuestion(
 export async function fetchChatHistory(
   feature: "qa" | "finance" | "eligibility",
   documentId: number,
-  sourceMode: string  
+  sourceMode: string ,
+  userId: number
 ) {
   const res = await api.get(`/${feature}/history`,{
     params: {
       document_id: documentId,
-      source_mode: sourceMode
+      source_mode: sourceMode,
+      userId: userId
     }
   });
   return res.data.messages.map((m:any) => ({

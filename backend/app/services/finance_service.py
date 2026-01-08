@@ -63,6 +63,6 @@ from app.services.qa_service import answer_from_domain
 from app.services.answer_schema import normalize_answer
 
 
-def explain_finance(question: str):
-    result = answer_from_domain(question, domain="finance")
+def explain_finance(question: str, source_mode: str):
+    result = answer_from_domain(question, domain="finance", source_mode=source_mode)
     return normalize_answer(result)

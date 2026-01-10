@@ -21,3 +21,4 @@ class Document(Base):
         server_default=func.now(),
         onupdate=func.now()
     )
+    file_size = Column(Integer, nullable=False)

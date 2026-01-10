@@ -75,5 +75,11 @@ app.include_router(
     tags=["Cleanup"]
 )
 
+app.include_router (
+    cleanup.router,
+    prefix="/maintenance",
+    tags=["Maintenance"]
+)
+
 # Expose `main` to support uvicorn invocation like `uvicorn app.main:main`
 main = app

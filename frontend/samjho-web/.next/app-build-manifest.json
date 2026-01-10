@@ -1,9 +1,10 @@
 {
   "pages": {
-    "/login/page": [
+    "/dashboard/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/login/page.js"
+      "static/css/app/dashboard/page.css",
+      "static/chunks/app/dashboard/page.js"
     ],
     "/layout": [
       "static/chunks/webpack.js",
@@ -11,22 +12,16 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/dashboard/page": [
+    "/finance/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/dashboard/page.css",
-      "static/chunks/app/dashboard/page.js"
+      "static/css/app/finance/page.css",
+      "static/chunks/app/finance/page.js"
     ],
-    "/jobs/page": [
+    "/login/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/jobs/page.css",
-      "static/chunks/app/jobs/page.js"
-    ],
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
+      "static/chunks/app/login/page.js"
     ],
     "/qa/page": [
       "static/chunks/webpack.js",
@@ -34,11 +29,10 @@
       "static/css/app/qa/page.css",
       "static/chunks/app/qa/page.js"
     ],
-    "/finance/page": [
+    "/_not-found/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/finance/page.css",
-      "static/chunks/app/finance/page.js"
+      "static/chunks/app/_not-found/page.js"
     ]
   }
 }

@@ -1,24 +1,15 @@
-import shutil
-import os
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from app.services.cleanup_service import cleanup_old_documents
+from app.dependencies.auth import get_current_user
 
-
-VECTOR_BASE = "vectors"
 router = APIRouter()
 
-def delete_user_vectors(user_id: int, domain: str | None = None):
-    """
-    Deletes vector stores for a user.
-    If domain is None -> delete all domains
-    """
-    user_path = os.path.join(VECTOR_BASE, f"user_{user_id}")
+@router.post("/cleanup")
+def cleanup_documents(current_user=Depends(get_current_user)):
+    # Optional: restrict to admin later
+    deleted = cleanup_old_documents(days=10)
 
-    if not os.path.exists(user_path):
-        return
-
-    if domain:
-        domain_path = os.path.join(user_path, domain)
-        if os.path.exists(domain_path):
-            shutil.rmtree(domain_path)
-    else:
-        shutil.rmtree(user_path)
+    return {
+        "deleted_documents": deleted,
+        "status": "cleanup completed"
+    }
